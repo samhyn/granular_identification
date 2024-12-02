@@ -10,7 +10,7 @@ Each recorded force-torque signal consists of 1600 samples, representing a 3.2-s
 
 data = readmatrix('force_torque_dataset_full.csv');
 sample = data(n, 1:1600);
-class = data(n, 1601);
+class_number = data(n, 1601);
 ```
 or
 
@@ -21,7 +21,7 @@ import numpy as np
 
 data = np.loadtxt('force_torque_dataset_full.csv')
 sample = data(n-1, 0:1600)
-class = data(n-1, 1600)
+class_number = data(n-1, 1600)
 ```
 
 The class-material correspondence table is as follows:
