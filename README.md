@@ -50,7 +50,7 @@ classes = {'dry_peas', 'rice', 'wheat_flour', 'clay_granule', ...
              'breadcrumbs', 'macaroni', 'fine_sugar', 'cat_litter'};
 
 class_size = 62;
-num_classes = 11;
+num_classes = numel(classes);
 
 data = zeros([class_size*num_classes 9601]);
 
@@ -61,7 +61,26 @@ for i = 0:num_classes-1
     class_data = readmatrix(['force_torque_data_all_axes_' classes{i+1} '.csv']);
     data(st_idx:end_idx, :) = class_data;
 end
+```
+or
+```python
+# Python
 
+import numpy as np
+
+classes = ['dry_peas', 'rice', 'wheat_flour', 'clay_granule',
+           'oat_flakes', 'potting_gravel', 'sunflower_seeds',
+           'breadcrumbs', 'macaroni', 'fine_sugar', 'cat_litter']
+
+class_size = 62
+data = []
+
+for class_name in classes:
+    class_data = np.loadtxt(
+        f'force_torque_data_all_axes_{class_name}.csv', delimiter=',')
+    data.append(class_data)
+
+data = np.vstack(data)
 
 ```
 
